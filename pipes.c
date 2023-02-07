@@ -31,11 +31,11 @@ int main()
                 char file_name[100];
                 printf("type the name of file\n"); 
                 fgets(file_name, 100, stdin);
-                int n = strlen(file_name)-1;//cause fget counting also "Enter" too
+                int n = strlen(file_name);//cause fget counting also "Enter" too
                 if (write(fd[1], &n, sizeof(int)) <0){//length of the message
                         return 2; 
                 }
-                //file_name[strlen(file_name)-1] = "\0";
+                file_name[strlen(file_name)-1] = '\0';//
                 if (write(fd[1], &file_name, strlen(file_name)) <0){//message itself 
                         return 3; 
                 }
